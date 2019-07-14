@@ -1,9 +1,9 @@
 FROM node:alpine as builder
 WORKDIR /app
 COPY package.json .
-RUN npm install
+RUN yarn
 COPY . .
-RUN npm run build
+RUN yarn build
 
 FROM nginx
 COPY --from=builder /app/build /usr/share/nginx/html
